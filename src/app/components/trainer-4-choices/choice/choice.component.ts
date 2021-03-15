@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, OnChanges } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
 
@@ -20,6 +20,7 @@ export class ChoiceComponent implements OnInit, OnDestroy {
 
 
   @Input() id: number;
+  @Input() sizePx: number;
 
 
   constructor(
@@ -34,11 +35,13 @@ export class ChoiceComponent implements OnInit, OnDestroy {
     this.shadowImgSrc = `assets/images/4-choices/shadow.png`;
 
     document.addEventListener('mouseup', () => this.onMouseUp());
+    document.addEventListener('touchend', () => this.onMouseUp());
   }
 
 
   ngOnDestroy(): void {
     document.removeEventListener('mouseup', () => this.onMouseUp());
+    document.removeEventListener('touchend', () => this.onMouseUp());
   }
 
 

@@ -1,7 +1,9 @@
 <div
   id="container"
   (mousedown)="onMouseDown()"
-  (click)="onClick()">
+  (touchstart)="onMouseDown()"
+  (click)="onClick()"
+  [ngStyle]="{'width': sizePx+'px', 'height': sizePx+'px'}">
 
   <!-- Shadow -->
   <img
