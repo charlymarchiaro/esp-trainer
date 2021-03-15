@@ -44,9 +44,7 @@ export const getTestStateInfo = (state: TestState): TestStateInfo => {
     completedTrials: completedTrials.length,
     successCount,
     failureCount,
-    isTestComplete: (
-      state.currentTrialIndex === state.trials.length - 1
-    ),
+    isTestComplete: completedTrials.length === state.trials.length,
     state,
   };
 };

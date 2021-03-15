@@ -33,9 +33,12 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
 
   public testStateInfo: TestStateInfo;
 
+  public successRatePercent: number;
+
   public isRewardImageActive: boolean;
   public rewardImageSrc: string;
 
+  public isCorrectAnswerActive: boolean;
 
   private subscription = new Subscription();
 
@@ -77,9 +80,9 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
 
   private updateChoiceSize(): void {
     if (window.innerWidth > window.innerHeight) {
-      this.choiceSizePx = window.innerHeight * 0.35;
+      this.choiceSizePx = window.innerHeight * 0.30;
     } else {
-      this.choiceSizePx = Math.min(window.innerWidth * 0.45, window.innerHeight * 0.35);
+      this.choiceSizePx = Math.min(window.innerWidth * 0.45, window.innerHeight * 0.30);
     }
   }
 
@@ -89,28 +92,35 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
   }
 
 
-  private setChoicesEnableState(enabled: boolean): void {
-    Object.values(this.choicesState).forEach(
-      cs => cs.isDisabled = !enabled
-    );
+  public onResetButtonClick(): void {
+    this.trainerService.reset();
+  }
+
+
+  public onPassButtonClick(): void {
+    this.trainerService.pass();
   }
 
 
   private onStateChange(info: TestStateInfo): void {
     this.testStateInfo = info;
-    // this.setChoicesEnableState(!info.isTestComplete);
+    this.successRatePercent = 100 * info.successCount / info.totalTrials;
+
+    this.updateChoicesEnableState();
   }
 
 
   private onTrialComplete(trialState: TrialState): void {
 
     // Display the correct answer
-    this.setChoicesEnableState(false);
+    this.isCorrectAnswerActive = true;
     this.choicesState[trialState.correctChoiceIndex].isHighlighted = true;
+    this.updateChoicesEnableState();
 
     setTimeout(() => {
+      this.isCorrectAnswerActive = false;
       this.choicesState[trialState.correctChoiceIndex].isHighlighted = false;
-      this.setChoicesEnableState(true);
+      this.updateChoicesEnableState();
     },
       HIGHLIGHT_CORRECT_ANSWER_DURATION_MS
     );
@@ -133,11 +143,29 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
   private handleTrialSuccess(trialState: TrialState): void {
     this.isRewardImageActive = true;
     this.rewardImageSrc = this.randomImageService.getRandomImage();
+    this.updateChoicesEnableState();
 
     setTimeout(() => {
       this.isRewardImageActive = false;
+      this.updateChoicesEnableState();
     },
       REWARD_IMAGE_DURATION_MS
+    );
+  }
+
+
+  private setChoicesEnableState(enabled: boolean): void {
+    Object.values(this.choicesState).forEach(
+      cs => cs.isDisabled = !enabled
+    );
+  }
+
+
+  private updateChoicesEnableState(): void {
+    this.setChoicesEnableState(
+      !this.isCorrectAnswerActive
+      && !this.isRewardImageActive
+      && !this.testStateInfo.isTestComplete
     );
   }
 }

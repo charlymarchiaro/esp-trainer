@@ -2,6 +2,30 @@
   <div id="header"></div>
 
   <div id="body">
+
+    <div
+      id="progress"
+      [ngStyle]="{
+        'width': choiceSizePx * 2 + 'px',
+        'padding': '0 ' + choiceSizePx * 0.1 + 'px',
+        'font-size': choiceSizePx * 0.1 + 'px'
+      }">
+
+      <mat-progress-bar [value]="successRatePercent"></mat-progress-bar>
+      <div
+        id="stats"
+        [ngStyle]="{
+        'line-height': choiceSizePx * 0.15 + 'px'
+      }">
+        <div id="success-count">
+          Correct: {{testStateInfo.successCount}}/{{testStateInfo.totalTrials}}
+        </div>
+        <div id="success-rate">
+          Success rate: {{successRatePercent | number: '0.1-1'}}%
+        </div>
+      </div>
+    </div>
+
     <div class="row">
       <app-choice-4
         [id]="0"
@@ -30,17 +54,39 @@
         [disabled]="choicesState[3].isDisabled"
         (clicked)="onChoiceClick(3)"></app-choice-4>
     </div>
+
     <div
       id="trial-label"
-      *ngIf="testStateInfo">
+      *ngIf="testStateInfo"
+      [ngStyle]="{
+        'width': choiceSizePx * 1 + 'px',
+        'padding': '0 ' + choiceSizePx * 0.1 +'px',
+        'margin-top': choiceSizePx * 0.1 + 'px',
+        'line-height': choiceSizePx * 0.2 + 'px',
+        'font-size': choiceSizePx * 0.15 + 'px',
+        'border-radius': choiceSizePx * 0.1 + 'px'
+      }">
       Trials: {{testStateInfo.completedTrials}}/{{testStateInfo.totalTrials}}
+    </div>
+
+    <div
+      id="button-panel"
+      [ngStyle]="{
+        'width': choiceSizePx * 2 + 'px',
+        'height': choiceSizePx * 0.3 + 'px',
+        'padding': '0 ' + choiceSizePx * 0.0 + 'px',
+        'margin-top': choiceSizePx * 0.1 + 'px',
+        'font-size': choiceSizePx * 0.08 + 'px'
+      }">
+      <button (click)="onResetButtonClick()">RESET</button>
+      <button (click)="onPassButtonClick()">PASS</button>
     </div>
 
     <div
       id="reward"
       *ngIf="isRewardImageActive">
       <img
-        [src]="rewardImageSrc"
+        [src]="rewardImageSrc | safeResourceUrl"
         [ngStyle]="{'width': choiceSizePx * 2 + 'px'}">
       <div class="label">Well done!</div>
     </div>

@@ -22,8 +22,8 @@ export class Trainer4ChoicesService {
 
   private get isTestComplete(): boolean {
     return (
-      this.testState.currentTrialIndex
-      === this.testState.trials.length - 1
+      this.testState.trials.filter(t => t.completed)
+        .length === this.testState.trials.length
     );
   }
 
