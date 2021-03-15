@@ -1,10 +1,8 @@
 @import "/src/styles.scss";
 
-$container-height: calc(100vh - #{$toolbar-height});
-
 #container {
     width: 100vw;
-    height: $container-height;
+    height: 100%;
     background-color: #2c3755;
 
     #header {

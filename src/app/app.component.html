@@ -1,7 +1,8 @@
 <!-- Toolbar -->
 <div
   class="toolbar"
-  role="banner">
+  role="banner"
+  [ngStyle]="{'height': headerHeightPx + 'px'}">
 
   <div id="logo-frame">
     <img
@@ -14,7 +15,11 @@
 
 <div
   class="content"
-  role="main">
+  role="main"
+  [ngStyle]="{
+    'height': contentHeightPx + 'px',
+    'top': headerHeightPx + 'px'
+  }">
 
-  <app-main></app-main>
+  <app-main id="app-main"></app-main>
 </div>

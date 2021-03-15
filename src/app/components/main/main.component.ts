@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AssetPreloaderService } from 'src/app/services/asset-preloader.service';
 
 @Component({
@@ -6,14 +6,9 @@ import { AssetPreloaderService } from 'src/app/services/asset-preloader.service'
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   constructor(
     assetPreloaderService: AssetPreloaderService,
   ) { }
-
-
-  ngOnInit(): void {
-  }
-
 }

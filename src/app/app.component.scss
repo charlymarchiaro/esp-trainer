@@ -6,7 +6,6 @@
     top: 0;
     left: 0;
     right: 0;
-    height: calc(#{$toolbar-height});
     padding: 5px 12px;
     background-color: #3f51b5;
     box-sizing: border-box;
@@ -37,8 +36,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: calc(#{$toolbar-height});
-    height: calc(100vh - #{$toolbar-height});
+
+    #app-main {
+        height: 100%;
+    }
 }
 
 /* Responsive Styles */

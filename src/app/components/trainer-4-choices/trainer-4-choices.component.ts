@@ -69,6 +69,7 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
+    window.removeEventListener('resize', () => this.onWindowResize());
     this.subscription.unsubscribe();
   }
 
