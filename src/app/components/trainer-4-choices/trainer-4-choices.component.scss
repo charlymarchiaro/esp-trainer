@@ -1,0 +1,25 @@
+#container {
+    width: 100vw;
+    background-color: #2c3755;
+
+    #header {
+    }
+
+    #body {
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        align-items: center;
+
+        .row {
+            display: flex;
+        }
+
+        app-choice-4 {
+            width: 30vh;
+        }
+    }
+
+    #footer {
+    }
+}

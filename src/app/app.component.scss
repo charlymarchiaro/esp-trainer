@@ -1,0 +1,71 @@
+@import "/src/styles.scss";
+
+.toolbar {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(#{$toolbar-height});
+    padding: 5px 12px;
+    background-color: #3f51b5;
+    box-sizing: border-box;
+    align-items: center;
+
+    #logo-frame {
+        background-color: #0006a35e;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        box-sizing: border-box;
+        margin-right: 11px;
+        line-height: 44px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin: 0;
+        color: white;
+    }
+}
+
+.content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: calc(#{$toolbar-height});
+    height: calc(100vh - #{$toolbar-height});
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link),
+    .terminal {
+        width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+        height: 16px;
+        margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+        margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+        right: 120px;
+        transform: rotate(-5deg);
+    }
+}
+
+@media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+        display: none;
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,33 @@
+<div
+  id="container"
+  (mousedown)="onMouseDown()"
+  (click)="onClick()">
+
+  <!-- Shadow -->
+  <img
+    id="shadow"
+    [src]="shadowImgSrc"
+    draggable="false">
+
+  <!-- State = off -->
+  <img
+    id="img"
+    *ngIf="state==='off'"
+    [src]="offImgSrc"
+    draggable="false">
+
+  <!-- State = on -->
+  <img
+    id="img"
+    *ngIf="state==='on'"
+    [src]="onImgSrc"
+    draggable="false">
+
+  <!-- State = pressed -->
+  <img
+    id="img"
+    class="pressed"
+    *ngIf="state==='pressed'"
+    [src]="offImgSrc"
+    draggable="false">
+</div>

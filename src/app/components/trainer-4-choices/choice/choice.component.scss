@@ -1,0 +1,26 @@
+#container {
+    width: inherit;
+    height: inherit;
+    padding: 8%;
+    box-sizing: border-box;
+    position: relative;
+    user-select: none;
+
+    img {
+        pointer-events: none;
+    }
+    #shadow {
+        width: 84%;
+        top: 16%;
+        position: absolute;
+    }
+    #img {
+        width: 100%;
+        position: relative;
+        cursor: pointer;
+    }
+    .pressed {
+        top: 0.5vh;
+        filter: brightness(0.7);
+    }
+}
