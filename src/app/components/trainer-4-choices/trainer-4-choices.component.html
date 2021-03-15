@@ -5,18 +5,44 @@
     <div class="row">
       <app-choice-4
         [id]="0"
-        [sizePx]="choiceSizePx"></app-choice-4>
+        [sizePx]="choiceSizePx"
+        [highlighted]="choicesState[0].isHighlighted"
+        [disabled]="choicesState[0].isDisabled"
+        (clicked)="onChoiceClick(0)"></app-choice-4>
       <app-choice-4
         [id]="1"
-        [sizePx]="choiceSizePx"></app-choice-4>
+        [sizePx]="choiceSizePx"
+        [highlighted]="choicesState[1].isHighlighted"
+        [disabled]="choicesState[1].isDisabled"
+        (clicked)="onChoiceClick(1)"></app-choice-4>
     </div>
     <div class="row">
       <app-choice-4
         [id]="2"
-        [sizePx]="choiceSizePx"></app-choice-4>
+        [sizePx]="choiceSizePx"
+        [highlighted]="choicesState[2].isHighlighted"
+        [disabled]="choicesState[2].isDisabled"
+        (clicked)="onChoiceClick(2)"></app-choice-4>
       <app-choice-4
         [id]="3"
-        [sizePx]="choiceSizePx"></app-choice-4>
+        [sizePx]="choiceSizePx"
+        [highlighted]="choicesState[3].isHighlighted"
+        [disabled]="choicesState[3].isDisabled"
+        (clicked)="onChoiceClick(3)"></app-choice-4>
+    </div>
+    <div
+      id="trial-label"
+      *ngIf="testStateInfo">
+      Trials: {{testStateInfo.completedTrials}}/{{testStateInfo.totalTrials}}
+    </div>
+
+    <div
+      id="reward"
+      *ngIf="isRewardImageActive">
+      <img
+        [src]="rewardImageSrc"
+        [ngStyle]="{'width': choiceSizePx * 2 + 'px'}">
+      <div class="label">Well done!</div>
     </div>
   </div>
 

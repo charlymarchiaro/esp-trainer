@@ -11,25 +11,18 @@
     [src]="shadowImgSrc"
     draggable="false">
 
-  <!-- State = off -->
+  <!-- State = on, off -->
   <img
     id="img"
-    *ngIf="state==='off'"
-    [src]="offImgSrc"
-    draggable="false">
-
-  <!-- State = on -->
-  <img
-    id="img"
-    *ngIf="state==='on'"
-    [src]="onImgSrc"
+    *ngIf="!isPressed"
+    [src]="foreImgSrc"
     draggable="false">
 
   <!-- State = pressed -->
   <img
     id="img"
     class="pressed"
-    *ngIf="state==='pressed'"
-    [src]="offImgSrc"
+    *ngIf="isPressed"
+    [src]="foreImgSrc"
     draggable="false">
 </div>
