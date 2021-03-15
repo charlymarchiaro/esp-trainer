@@ -30,6 +30,7 @@ export class Trainer4ChoicesService {
 
   public stateChange = new EventEmitter<TestStateInfo>();
   public trialComplete = new EventEmitter<TrialState>();
+  public trialPass = new EventEmitter<TrialState>();
 
 
   constructor(
@@ -50,6 +51,7 @@ export class Trainer4ChoicesService {
     if (this.isTestComplete) {
       return;
     }
+    this.trialPass.emit(this.currentTrial);
     this.initCurrentTrial();
   }
 

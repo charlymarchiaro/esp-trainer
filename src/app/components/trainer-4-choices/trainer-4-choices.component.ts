@@ -57,6 +57,11 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
         t => this.onTrialComplete(t)
       )
     );
+    this.subscription.add(
+      this.trainerService.trialPass.subscribe(
+        t => this.onTrialPass(t)
+      )
+    );
   }
 
 
@@ -113,7 +118,24 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
 
   private onTrialComplete(trialState: TrialState): void {
 
-    // Display the correct answer
+    this.displayCorrectAnswer(trialState);
+
+    // Handle the trial result
+    if (trialState.result === 'success') {
+      this.handleTrialSuccess(trialState);
+
+    } else {
+      this.handleTrialFailure(trialState);
+    }
+  }
+
+
+  private onTrialPass(trialState: TrialState): void {
+    this.displayCorrectAnswer(trialState);
+  }
+
+
+  private displayCorrectAnswer(trialState: TrialState): void {
     this.isCorrectAnswerActive = true;
     this.choicesState[trialState.correctChoiceIndex].isHighlighted = true;
     this.updateChoicesEnableState();
@@ -125,14 +147,6 @@ export class Trainer4ChoicesComponent implements OnInit, OnDestroy {
     },
       HIGHLIGHT_CORRECT_ANSWER_DURATION_MS
     );
-
-    // Handle the trial result
-    if (trialState.result === 'success') {
-      this.handleTrialSuccess(trialState);
-
-    } else {
-      this.handleTrialFailure(trialState);
-    }
   }
 
 
