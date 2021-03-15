@@ -1,5 +1,14 @@
 # EspTrainer
 
+## :point_right: Live demo [here](https://charlymarchiaro.github.io/esp-trainer/)
+
+
+This is an ESP trainer as described here: http://www.espresearch.com/iphone/.
+
+It is completely free and open-source, without ads, and is based on the iPhone version available in the [AppStore](https://apps.apple.com/us/app/esp-trainer/id336882103).
+
+# Project
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
 
 ## Development server
