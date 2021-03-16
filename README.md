@@ -2,10 +2,11 @@
 
 ## :point_right: Live demo [here](https://charlymarchiaro.github.io/esp-trainer/)
 
-
 This is an ESP trainer as described here: http://www.espresearch.com/iphone/.
 
 It is completely free and open source, without ads, and is based on the iPhone version available on the [App Store](https://apps.apple.com/us/app/esp-trainer/id336882103).
+
+![image](https://user-images.githubusercontent.com/8899257/111372023-e6203500-8678-11eb-807e-755a1363f4a0.png)
 
 # Project
 
