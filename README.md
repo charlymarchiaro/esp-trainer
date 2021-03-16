@@ -5,7 +5,7 @@
 
 This is an ESP trainer as described here: http://www.espresearch.com/iphone/.
 
-It is completely free and open-source, without ads, and is based on the iPhone version available in the [AppStore](https://apps.apple.com/us/app/esp-trainer/id336882103).
+It is completely free and open source, without ads, and is based on the iPhone version available on the [App Store](https://apps.apple.com/us/app/esp-trainer/id336882103).
 
 # Project
 
